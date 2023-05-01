@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  GoogleOAuthProvider,
-  GoogleLogin,
-  GoogleLogout,
-} from "@react-oauth/google";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
 import jwt_decode from "jwt-decode";
@@ -15,10 +10,10 @@ const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (res) => {
     const decoded_res = jwt_decode(res.credential);
-    console.log(decoded_res)
+    console.log(decoded_res);
 
     const { name, sub, picture } = decoded_res;
-    localStorage.setItem('user', JSON.stringify(decoded_res));
+    localStorage.setItem("user", JSON.stringify(decoded_res));
 
     const doc = {
       _id: sub,
