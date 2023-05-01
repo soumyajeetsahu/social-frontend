@@ -12,14 +12,6 @@ const Feed = () => {
 
   useEffect(() => {
     setLoading(true);
-    client.fetch(feedQuery).then((data) => {
-      setPins(data);
-      setLoading(false);
-    });
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
 
     if (categoryId) {
       const query = searchQuery(categoryId);
@@ -29,12 +21,12 @@ const Feed = () => {
         setLoading(false);
       });
     } 
-    // else {
-    //   client.fetch(feedQuery).then((data) => {
-    //     setPins(data);
-    //     setLoading(false);
-    //   });
-    // }
+    else {
+      client.fetch(feedQuery).then((data) => {
+        setPins(data);
+        setLoading(false);
+      });
+    }
   }, [categoryId]);
 
   if (loading) {
