@@ -16,10 +16,6 @@ const PinDetail = ({ user }) => {
   const [addingComment, setAddingComment] = useState(false);
 
   const fetchPinDetails = () => {
-    
-  };
-
-  useEffect(() => {
     const query = pinDetailQuery(pinId);
 
     if (query) {
@@ -34,6 +30,10 @@ const PinDetail = ({ user }) => {
         }
       });
     }
+  };
+
+  useEffect(() => {
+    fetchPinDetails()
   }, [pinId]);
 
   const addComment = () => {
